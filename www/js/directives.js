@@ -6,8 +6,10 @@ angular.module('starter.directives', [])
         element.height(parent.height());
     }
     function resizeCanvas(element, parent) {
-        element.width = parseInt(parent.width(), 10);
-        element.height = parseInt(parent.height(), 10);
+        element.width = parseInt(parent.width(), 10) * $window.devicePixelRatio;
+        element.height = parseInt(parent.height(), 10) * $window.devicePixelRatio;
+
+        resize(angular.element(element), parent);
     }
     return function(scope, element) {
         scope.$parent.canvas = document.createElement('canvas');
